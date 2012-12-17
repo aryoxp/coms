@@ -1,0 +1,15 @@
+@import url(../../bootstrap/css/bootstrap.css);
+@import url(../../bootstrap/css/bootstrap-datepicker.css);
+@import url(../base.css);
+@import url(../../pagedown/pagedown.css);
+
+.label-tag {
+	margin:3px 3px 0px 0px !important;
+	cursor:pointer;
+	padding:3px 7px;
+}
+
+#save-status {
+	margin-left:20px; 
+	color:#999999;
+}
