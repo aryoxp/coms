@@ -1,28 +1,25 @@
-<?php $this->view('header.php'); ?>
-<?php $this->view('navbar.php'); ?>
+<?php $this->head(); ?>
 
 <script type="text/javascript" src="<?php echo $this->asset('pagedown/Markdown.Converter.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo $this->asset('pagedown/Markdown.Sanitizer.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo $this->asset('pagedown/Markdown.Editor.js'); ?>"></script>
 
-<?php $this->view('contents/markdown-help.php'); ?>
-
 <div class="container-fluid">
     
-    <form id="write-form" name="auth" method="post" action="<?php echo $this->location('content/post'); ?>" class="form-inline">
+    <form id="write-form" name="auth" method="post" action="<?php echo $this->location('module/content/home/post'); ?>" class="form-inline">
     <input type="hidden" name="id" id="id" value="<?php echo $content->id; ?>" />
     <input type="hidden" name="content_author_id" id="content-author-id" value="<?php echo $user->username; ?>" />
     <fieldset style="width:99%">
     	<legend>
-        <a href="<?php echo $this->location('content'); ?>" class="btn btn-info pull-right"><i class="icon-list icon-white"></i> Content List</a>
-        <a href="<?php echo $this->location('content/write'); ?>" class="btn pull-right" style="margin:0px 5px"><i class="icon-pencil"></i> Write New Content</a>
+        <a href="<?php echo $this->location('module/content'); ?>" class="btn btn-info pull-right"><i class="icon-list icon-white"></i> Content List</a>
+        <a href="<?php echo $this->location('module/content/home/write'); ?>" class="btn pull-right" style="margin:0px 5px"><i class="icon-pencil"></i> Write New Content</a>
         
         Edit Content
         </legend>    
         
     <div class="row-fluid">
     
-        <div class="span8">
+        <div class="span12">
         
             <div class="control-group">
                 <div class="hide" id="notification-container"></div>
@@ -55,11 +52,7 @@
                   <div class="tab-pane active" id="tab-write">
                     <div class="controls">
                     
-                        <div id="wmd-editor" class="wmd-panel">
-                            <div id="wmd-button-bar"></div>
-                            <textarea name="content_content" class="input-xxlarge" id="wmd-input" style="height:300px;" ><?php echo $content->content_content; ?></textarea>    
-                        </div>
-        
+                        <textarea name="content_content" class="tinymce" id="tinymce" style="height:300px;" ><?php echo $content->content_content; ?></textarea>
                     </div>                  
                   </div><!--/tab-write-->
                   <div class="tab-pane" id="tab-preview">
@@ -77,11 +70,7 @@
                   </div>
                 </div>
                 
-            </div><!-- /control-group -->
-                    
-        </div><!-- /span8 -->    
-    
-        <div class="span4">
+            </div><!-- /control-group -->                
             
             <div class="control-group">            
               	<div class="accordion-group">
@@ -112,7 +101,7 @@
                         
             </div><!-- /control-group -->
     
-        </div><!-- /span4 -->
+        </div><!-- /span12 -->
                
     </div><!-- /row-fluid -->
 
@@ -146,4 +135,4 @@
 
 <script type="text/javascript" src="<?php echo $this->asset('pagedown/pagedown.js'); ?>"></script>
 
-<?php $this->view('footer.php'); ?>
+<?php $this->foot(); ?>

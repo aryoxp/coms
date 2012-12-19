@@ -8,15 +8,16 @@ $(function(){
 
 	tinyMCE.init({
 		// General options
-		mode : "textareas",
+		mode : "exact",
+		elements: "tinymce",
 		theme : "advanced",
 		plugins : "autolink,lists,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,wordcount,advlist,autosave,visualblocks",
 
 		// Theme options
-		theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect",
-		theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-		theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-		theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,pagebreak,restoredraft,visualblocks",
+		theme_advanced_buttons1 : "newdocument,|,bold,italic,underline,strikethrough,|,forecolor,backcolor,|,justifyleft,justifycenter,justifyright,justifyfull,cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote",
+		theme_advanced_buttons2 : "styleselect,formatselect,fontselect,fontsizeselect,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code",
+		theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,fullscreen",
+		theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,|,styleprops,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,pagebreak,restoredraft,visualblocks,|,insertdate,inserttime,preview",
 		theme_advanced_toolbar_location : "top",
 		theme_advanced_toolbar_align : "left",
 		theme_advanced_statusbar_location : "bottom",
@@ -51,96 +52,7 @@ $(function(){
 
 	
 	
-	/*
 	
-	
-	
-	
-	
-	var getAllTags = function() {
-			result = {};
-			$.ajax({
-				url: base_url + 'content/getAllTags', 
-				async: false,
-				dataType: "json",
-				success: function(data) {
-					result = data;
-				}
-			});
-			return result;
-		}
-
-	$('#content-tags').typeahead({
-		source: getAllTags(), 
-		items: 5
-	});
-	
-	var addTagToList = function(){
-		tag = $('#content-tags').val().trim();
-		
-		var tags = tag.match(/\w+|'[^']+'/g);
-		for(i = 0; i < tags.length; i++) {
-			
-			if(((tags[i]).trim()) != '') {
-				tag = (tags[i]).replace(/'/g,"");
-				$('#selected-tags').append('<div class="label label-big pull-left label-tag" title="Click to remove">'+tag+'</div>');
-				$('#content-tags').val('');
-			}
-		}
-		return false;
-	}
-	
-	$('#btn-add-tag').click(function(){
-		addTagToList();
-	});
-	
-	$('#content-tags').keypress(function(e) {
-        if(e.keyCode == 13){
-			addTagToList();
-			e.preventDefault();	
-		}
-    });
-	
-	$('.label-tag').live('click',function () {
-        $(this).remove();   
-    });
-	
-	$('.label-tag').live('hover',function () {
-		$(this).tooltip();
-	});
-	
-	$('.tooltip').tooltip();
-	
-	var addCategoryToList = function(){
-		cat = $('#content-categories').val().trim();
-		if(cat!='') {
-			$.post(
-				base_url + "content/create/category",
-				{category: cat},
-				function(data){
-					$('#categories-list').append(data);
-					$('#content-categories').val('');
-				}
-			);		
-		}
-	}
-	
-	$('#btn-add-category').click(function(){
-		addCategoryToList();
-	});
-	
-	$('#content-categories').keypress(function(e) {
-        if(e.keyCode == 13){
-			addCategoryToList();
-			e.preventDefault();	
-		}
-    });
-	
-	$('#comment-status').click(function(){
-		if($(this).hasClass("active"))
-			$(this).removeClass("btn-danger").addClass("btn-info").text("Allowed");
-		else $(this).removeClass("btn-info").addClass("btn-danger").text("Disallowed"); 
-	});
 	
 	$('#write-form').submit(function(){
 		return false;
@@ -177,6 +89,7 @@ $(function(){
 	  
 	  
 	var savePost = function(btn){
+		tinyMCE.triggerSave(true,true);
 		if(validatePost()) {
 					
 			var d = $('#write-form').serialize() + "&content_status="+ content_status;
@@ -185,13 +98,13 @@ $(function(){
 			$('#save-status').text('Saving...');
 			
 			$.post(
-				base_url + "content/save",
+				base_url + "module/content/home/save",
 				d,
 				function(data) {
 					if(data.status == "OK") {
 						$('#id').val(data.id);
 						$('#save-status').text(data.modified);
-						window.location.replace(base_url + "content/edit/" + data.id);
+						window.location.replace(base_url + "module/content/home/edit/" + data.id);
 					} else {
 						$('#save-status').text('Failed to save content. ' + data.error);
 					}
@@ -212,5 +125,5 @@ $(function(){
 		format: 'dd/mm/yyyy'
 	});
 	
-	*/
+	
 });

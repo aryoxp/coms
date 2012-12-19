@@ -51,7 +51,7 @@
 				  <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">Action <b class="caret"></b></a>
 				  <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
 				    <li>
-				    <a class="btn-edit-post" href="<?php echo $this->location('content/edit/'.$post->id); ?>"><i class="icon-pencil"></i> Edit</a>	
+				    <a class="btn-edit-post" href="<?php echo $this->location('module/content/home/edit/'.$post->id); ?>"><i class="icon-pencil"></i> Edit</a>	
 				    </li>
 				    <li>
 					<a class="btn-delete-post"><i class="icon-remove"></i> Delete</a>

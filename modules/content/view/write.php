@@ -10,13 +10,14 @@
     <input type="hidden" name="id" id="id" value="" />
     <input type="hidden" name="content_author_id" id="content-author-id" value="<?php echo $user->username; ?>" />
     <fieldset style="width:99%">
-    	<legend>Write New Content
+    	<legend>
+    		Write New Content
         	<a href="<?php echo $this->location('module/content'); ?>" class="btn pull-right"><i class="icon-list"></i> Contents List</a>
         </legend>    
         
     <div class="row-fluid">
     
-        <div class="span8">
+        <div class="span12">
         
             <div class="control-group">
                 <div class="hide" id="notification-container"></div>
@@ -58,10 +59,6 @@
                 
                 
             </div><!-- /control-group -->
-        
-        </div><!-- /span8 -->    
-    
-        <div class="span4">
             
             <div class="control-group">            
               	<div class="accordion-group">
@@ -92,7 +89,7 @@
                                                     
             </div><!-- /control-group -->
     
-        </div><!-- /span4 -->
+        </div><!-- /span8 -->
                
     </div><!-- /row-fluid -->
 

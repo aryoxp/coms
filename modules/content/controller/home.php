@@ -63,7 +63,7 @@ class content_home extends comsmodule {
 	}
 	
 	function save(){
-		$mpost = new model_contents_content();
+		$mpost = new model_content();
 		
 		$id = $_POST['id'];
 		if(!$id) $id = NULL;
@@ -126,7 +126,7 @@ class content_home extends comsmodule {
 	
 	function delete() {
 		$id = $_POST['id'];
-		$mpost = new model_contents_content();
+		$mpost = new model_content();
 		$result = array();
 		if($mpost->delete($id))
 			$result['status'] = "OK";
@@ -148,22 +148,20 @@ class content_home extends comsmodule {
 			exit;
 		}
 		
-		$mcontent = new model_contents_content();
+		$mcontent = new model_content();
 				
-		$data['user'] 		= $this->session->get("user");		
+		$data['user'] 		= $this->coms->session->get("user");		
 		$data['content']	= $mcontent->getContent($contentid);
 
 		$this->add_style('css/editor.css');
-		$this->add_style('jqueryFileTree/jqueryFileTree.css');
-		
-		$this->add_script('bootstrap/js/bootstrap-datepicker.js');
-		$this->add_script('bootstrap/js/bootstrap-tab.js');
-		$this->add_script('jqueryFileTree/jqueryFileTree.js');
-		$this->add_script('js/contents/edit.js');
+		$this->coms->add_script('tiny_mce/tiny_mce.js');
+		$this->coms->add_style('jqueryFileTree/jqueryFileTree.css');		
+		$this->coms->add_script('jqueryFileTree/jqueryFileTree.js');
+		$this->add_script('js/edit.js');
 		$this->add_script('js/upload.js');
 		$this->add_script('js/filetree.js');
 		
-		$this->view('contents/edit.php', $data);
+		$this->view('edit.php', $data);
 	}
 	
 	public function tags() {
