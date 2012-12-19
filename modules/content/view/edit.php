@@ -108,13 +108,28 @@
     	<div class="row-fluid">
             <div class="span12">
                 <div class="form-actions">
-                    <a class="btn btn-danger pull-right" id="btn-discard">
-                    <i class="icon-minus icon-white"></i> Discard</a>            
-					<a href="<?php echo $this->location('contents'); ?>" class="btn btn-info pull-right" style="margin-right:5px">
-                    <i class="icon-list icon-white"></i> Content List</a>                            
-                    <a href="<?php echo $this->location('contents/write'); ?>" class="btn pull-right" style="margin-right:5px;"><i class="icon-pencil"></i> Write New Content</a>
+                
+                	<div class="btn-group pull-right">
+                	  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                	    Action
+                	    <span class="caret"></span>
+                	  </a>
+                	  <ul class="dropdown-menu">
+                	  
+                	    <li><a id="btn-discard"><i class="icon-minus"></i> Discard</a></li>
+                	    <li><a href="<?php echo $this->location('module/content'); ?>"><i class="icon-list"></i> Back to Content List</a></li>
+                	    <li><a href="<?php echo $this->location('module/content/home/write'); ?>"><i class="icon-pencil"></i> Write New Content</a></li>
+                	    
+                	  </ul>
+                	</div>
+                
+                    
+                               
+					                          
+                    
+                    
                     <button class="btn btn-primary" data-loading-text="Publishing..." id="btn-publish">Save and Publish</button>
-                    <button class="btn" data-loading-text="Saving..." id="btn-draft">Save as Draft</button>
+                    <button class="btn btn-warning" data-loading-text="Saving..." id="btn-draft">Save as Draft</button>
                 </div>    
             </div>
     	</div>
