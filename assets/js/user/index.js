@@ -27,11 +27,10 @@ $(function(){
 	});
 	
 	$('.btn-toggle-status-user').click(function(){
-		uid = $(this).data('uid'); //alert(uid);
-		label = $(this).parents('td').siblings('.col-status').children('.label');
+		uid = $(this).data('uid'); // alert(uid);
+		label = $(this).parents('tr').find('.label-status'); // alert(label);
 		btn = $(this);
 		btn.button('loading');	
-		//alert( $(this).parents('td').siblings('.col-status').children('.label').html() );
 		
 		$.post(
 			base_url + 'user/togglestatus',
@@ -43,8 +42,8 @@ $(function(){
 				if(data.status.trim() == "OK") {
 					label.html(data.ustatus);
 					if(data.ustatus == 'Active')
-						label.removeClass('label-warning').addClass('label-info');
-					else label.removeClass('label-info').addClass('label-warning');
+						label.removeClass('label-warning').addClass('label-success');
+					else label.removeClass('label-success').addClass('label-warning');
 				}
 				else alert(data.error);
 				

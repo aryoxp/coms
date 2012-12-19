@@ -20,10 +20,10 @@
 							<?php 
 							switch($user->status) { 
 								case 1:
-								echo '<span class="label label-success">Active</span>';
+								echo '<span class="label label-success label-status">Active</span>';
 								break;
 								case 0:
-								echo '<span class="label label-warning">Suspended</span>';
+								echo '<span class="label label-warning label-status">Suspended</span>';
 							} 
 							?>
 							<p>
