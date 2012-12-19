@@ -18,10 +18,15 @@
     <link href="<?php echo $this->asset("bootstrap/css/bootstrap.min.css"); ?>" rel="stylesheet">
     <link href="<?php echo $this->asset("bootstrap/css/bootstrap-responsive.min.css"); ?>" rel="stylesheet">
     <link href="<?php echo $this->asset("css/base.css"); ?>" rel="stylesheet">
-    <?php $styles = $this->get_styles(); if(is_array( $styles )) : 
+    <?php $styles = $this->get_styles(); 
+        if(is_array( $styles )) : 
+    	
 		foreach($styles as $s) : 
 	?><link href="<?php echo $this->asset($s); ?>" rel="stylesheet">
 	<?php endforeach; endif; ?>
+	<?php if( isset($mstyles) and is_array($mstyles)) { 
+	foreach( $mstyles as $s) : ?><link href="<?php echo $this->location($s); ?>" rel="stylesheet">
+	<?php endforeach; } ?>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>

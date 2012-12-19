@@ -1,5 +1,8 @@
 
-	<div id="footer" class="container-fluid">
+	</div><!--/span9-->
+	</div><!--/container-->
+	
+	<div id="footer" class="container-fluid" style="margin-top: 1em;">
 	
 		<p class="pull-right"><a href="#"><i class="icon-chevron-up"></i> Back to top</a></p>
 	
@@ -22,5 +25,9 @@
 	<?php $scripts = $this->get_scripts(); 
 	foreach( $scripts as $s) : ?><script src="<?php echo $this->asset($s); ?>"></script>
 	<?php endforeach; ?>
+	<?php if( isset($mscripts) and is_array($mscripts)) { 
+	foreach( $mscripts as $s) : ?><script src="<?php echo $this->location($s); ?>"></script>
+	<?php endforeach; } ?>
+	
 	</body>
 </html>

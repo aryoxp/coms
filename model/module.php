@@ -38,7 +38,6 @@ class model_module extends model {
 		return $mods;
 	}
 	
-	
 	public function activate( $id = NULL ) {
 		$moptions = new model_options();
 		$mods = $moptions->read('coms-module');

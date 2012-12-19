@@ -4,7 +4,7 @@ class hello_home extends comsmodule {
 	
 	public function __construct() {
 		parent::__construct();
-		//var_dump($this);
+
 	}
 	
 	public function path() {
@@ -14,8 +14,8 @@ class hello_home extends comsmodule {
 	}
 	
 	public function index() {
-$this->head();
-echo "Hello, from index!";
-$this->foot();		
+		$this->head();
+		echo "Hello, from index!";
+		$this->foot();		
 	}
 }

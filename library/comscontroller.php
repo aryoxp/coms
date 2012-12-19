@@ -13,13 +13,21 @@ class comscontroller extends controller {
 	private $comsmodules = NULL;
 	
     public function __construct(){
-
-        parent::__construct();    
+		
+        parent::__construct();  
+  		
   		if(!defined('MODULE'))
   			define('MODULE','modules/');
   		      
 		$this->page_title = $this->config->page_title;		
 		$this->loadAllModules();
+		
+		if(!$this->authenticatedUser) {
+			$this->authenticatedUser->username = "guest";
+			$this->authenticatedUser->level = 0;
+			$this->authenticatedUser->name = "Guest";
+			$this->authenticatedUser->status = 0;
+		}		
 		
 	}
 	
@@ -52,12 +60,15 @@ class comscontroller extends controller {
 	}
 	
 	public function head() {
+
 		$navbar['user'] = $this->authenticatedUser;   //$this->session->get("user");
 		$navbar['modules'] = $this->comsmodules;
-		$navbar['userid'] = $this->authenticatedUser->username;
 		
+		$navbar['userid'] = $this->authenticatedUser->username;
+			
 		$this->view('header.php');
-		$this->view('navbar.php', $navbar);		
+		$this->view('navbar.php', $navbar);	
+		$this->view('sidebar.php', array('modules'=>$this->comsmodules));
 	}
 	
 	public function foot() {
@@ -102,7 +113,7 @@ class comscontroller extends controller {
 	public function autoload_module_model( $className ) {
 		// convert the given class name to it's path
 		$classPath = trim( str_replace("_", "/", $className), "/" );
-		@include_once MODULE . $this->module->name . "/model/" 
+		include_once MODULE . $this->module->name . "/model/" 
 			. trim( strstr( $classPath, "/" ), "/" ) .'.php';
 			
 	}

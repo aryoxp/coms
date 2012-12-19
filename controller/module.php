@@ -5,18 +5,16 @@ class controller_module extends comscontroller {
 
 	function __construct() {
 		parent::__construct();
-		
-		// this controller requires authentication
-		// initialize it!
-		$this->require_auth('auth');
-		
+
 		// re-route to module MVC
 		if(!method_exists($this, $this->methodName))
 			$this->start();
-					
+		//exit;		
 	}
 	
 	public function index( $status = NULL){
+	
+		$this->require_auth('auth');
 	
 		$mmodule = new model_module();
 		$moption = new model_options();
@@ -24,8 +22,6 @@ class controller_module extends comscontroller {
 		$data['active_modules'] = $moption->read('coms-module');
 		$data['modules'] = $mmodule->getAllAvailableModules();
 		$data['status'] = $status;
-
-		//var_dump($data);
 		
 		$this->add_script('js/modules.js');
 		
@@ -33,16 +29,22 @@ class controller_module extends comscontroller {
 	}
 	
 	public function activate() {
+	
+		$this->require_auth('auth');
+		
 		$mmodule = new model_module();
 		
 		if(isset($_POST['module']) && $result = $mmodule->activate( $_POST['module'] ) )
 		{	
 			echo json_encode(array('result'=>"OK"));
 		} else echo json_encode(array('result'=>"NOK"));
-		//var_dump($result);
+
 	}
 	
 	public function deactivate() {
+	
+		$this->require_auth('auth');
+	
 		$mmodule = new model_module();
 
 		if( isset($_POST['module']) && $mmodule->deactivate( $_POST['module'] ) )
@@ -50,12 +52,7 @@ class controller_module extends comscontroller {
 		else echo json_encode(array('result'=>"NOK"));
 	}
 		
-	private function initRouter(){
-		
-		//echo "<pre>";
-		
-		//$this->config 		= config::instance();
-		//$this->fulluristring 	= $_SERVER['REQUEST_URI'];
+	private function initRouter() { // initialize module router
 
 		$path = NULL;
 		
@@ -112,18 +109,18 @@ class controller_module extends comscontroller {
 	private function start() {
 		
 		$this->initRouter();
-		//var_dump($this->module);
-		if($this->module && $this->module->controller) {
-			
-			//parent::__construct();
 		
-			$mod = new $this->module->controller();
+		if($this->module && $this->module->controller) {
+			//var_dump($this); exit;
+			$mod = new $this->module->controller($this);
 
 			if( $mod ) {
 				if(method_exists($mod, $this->module->method)) {
+				
 					call_user_func_array(array($mod, $this->module->method), $this->module->args);
 					exit;
 				} else {
+				
 					// catch errors in case selected method is undefined
 					$err = "Method ".$this->module->method." is undefined on controller: ".$this->module->controller;
 					$error = new error( $err );
