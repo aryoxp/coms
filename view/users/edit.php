@@ -58,8 +58,9 @@
                     <?php endif; ?>
                     <hr />
                     <a href="<?php echo $this->location('user'); ?>" class="btn pull-right"><i class="icon-list"></i> Back to User List</a>
-                    <input type="submit" value="Save User Profile" class="btn btn-primary btn-save-user" data-loading-text="Saving..." /> <span id="status-save" style="margin-left:1em;">&nbsp;</span>
+                    <input type="submit" value="Save User Profile" class="btn btn-primary btn-save-user" data-loading-text="Saving..." />
                     </div>
+                    <span id="status-save" style="margin-left:1em;">&nbsp;</span>                   
                 </form>
                 <?php if($this->authenticatedUser->id == $user->id) : ?>
                 <div class="well">
@@ -86,7 +87,7 @@
                         </div>
                         <hr />
                         <a href="<?php echo $this->location('user'); ?>" class="btn pull-right"><i class="icon-list"></i> Back to User List</a>
-                        <input type="submit" value="Change Password" class="btn btn-primary btn-update-password" data-loading-text="Updating..." />
+                        <input type="submit" value="Change Password" class="btn btn-primary btn-update-password" data-loading-text="Updating..." /><br>
                         <span id="status-password" style="margin-left:1em;">&nbsp;</span>
                     </fieldset>
                     </div>                
