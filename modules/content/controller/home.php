@@ -118,7 +118,7 @@ class content_home extends comsmodule {
 		$data['by'] = $by;
 		$data['keyword'] = $keyword;
 		
-		$this->add_script('js/contents/index.js');
+		$this->add_script('js/index.js');
 
 		$this->view("index.php", $data);
 		

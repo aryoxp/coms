@@ -9,7 +9,7 @@ $(function(){
 		var row = $(this).parents('tr');
 				
 		$.post(
-			base_url + 'content/delete',
+			base_url + 'module/content/home/delete',
 			{id: pid},
 			function(data){
 				if(data.status.trim() == "OK")
