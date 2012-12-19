@@ -4,35 +4,34 @@
 		<div class="span8">
 			<fieldset>
 				<legend>User List</legend>
-				<?php 
-		//var_dump($users); 
-				if( isset($users) ) : 
-					?>
+				<?php if( isset($users) ) : ?>
 				<table class="table table-striped">
 					<thead>
-						<th>Level</th>
-						<th>Username</th>
-						<th>Name / E-mail</th>
-						<th>Status</th>
-						<th>&nbsp;</th>
+						<th>User</th>
+						<th>Operation</th>
 					</thead>
 					<?php
 					foreach($users as $user) {
 						?>
 						<tr id="user-<?php echo $user->id; ?>" data-id="<?php echo $user->id; ?>">
-							<td><?php echo $user->level; ?></td>
-							<td><?php echo $user->username; ?></td>
-							<td><?php echo $user->name; ?><?php if( $user->email ) echo '<br /><code>'.$user->email.'</code>'; ?></td>
-							<td class="col-status" style="min-width:80px;">
-								<?php switch($user->status) { 
-									case 1:
-									echo '<span class="label label-info">Active</span>';
-									break;
-									case 0:
-									echo '<span class="label label-warning">Suspended</span>';
-								} ?>
-							</td>
 							<td>
+							<?php echo $user->name; ?>
+							<span class="badge badge-info">Level <?php echo $user->level; ?></span>
+							<?php 
+							switch($user->status) { 
+								case 1:
+								echo '<span class="label label-success">Active</span>';
+								break;
+								case 0:
+								echo '<span class="label label-warning">Suspended</span>';
+							} 
+							?>
+							<p>
+							<code><?php echo $user->username; ?></code>
+							<?php if( $user->email ) echo '<i class="icon-envelope"></i> <small>'.$user->email.'</small>'; ?>
+							</p>
+							</td>
+							<td style="min-width: 100px;">
 							  <ul class="nav nav-pills" style="margin:0;">
 							  <li class="dropdown">
 				                <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">Action <b class="caret"></b></a>
