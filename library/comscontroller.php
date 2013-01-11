@@ -72,7 +72,7 @@ class comscontroller extends controller {
 	}
 	
 	public function foot() {
-		$this->view('footer.php');		
+		$this->view('footer.php');	
 	}
 	
 	public function add_style($stylepath) {

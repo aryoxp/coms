@@ -8,9 +8,12 @@ class comsmodule extends comscontroller {
 	private $scripts = array();
 	
 	public function __construct($coms = NULL) {
-		if( $coms ) {
+		if( $coms !== NULL ) {
 			$this->module = $coms->module;
 			$this->coms = $coms;
+		} else {
+			echo "Error: The required COMS argument was not found on module constructor!";
+			exit;
 		}
 		
 		$mmodule = new model_module();

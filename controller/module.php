@@ -110,7 +110,7 @@ class controller_module extends comscontroller {
 		
 		$this->initRouter();
 		
-		if($this->module && $this->module->controller) {
+		if($this->module && @$this->module->controller) {
 			//var_dump($this); exit;
 			$mod = new $this->module->controller($this);
 
