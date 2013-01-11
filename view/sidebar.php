@@ -32,8 +32,8 @@
         Settings
 		</a>
 			<ul class="dropdown-menu">
-		    <li><a href="<?php echo $this->location($module_url); ?>"><i class="icon-user"></i> User Management</a></li>
-		    <li><a href="<?php echo $this->location($module_url."home/write"); ?>">
+		    <li><a href="<?php echo $this->location('user'); ?>"><i class="icon-user"></i> User Management</a></li>
+		    <li><a href="<?php echo $this->location('module'); ?>">
 		    <i class="icon-th"></i> Modules</a></li>
 		</ul>      
       </li>
