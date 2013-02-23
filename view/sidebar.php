@@ -7,13 +7,21 @@
 	  <li class="nav-header">Modules</li>
 	
 		<?php
-		foreach ($modules as $modname) {
-			$module_url = "module/" . $modname . "/";
-			$menufile = MODULE . $modname . "/view/" . $modname . ".sidemenu.php";
-			//var_dump($menufile);
-			if( is_readable( $menufile ) )
-				include($menufile);
-		}
+		if(isset($modules) and $modules):
+			if(count($modules)):
+			foreach ($modules as $modname) {
+				$module_url = "module/" . $modname . "/";
+				$menufile = MODULE . $modname . "/view/" . $modname . ".sidemenu.php";
+				//var_dump($menufile);
+				if( is_readable( $menufile ) )
+					include($menufile);
+			}
+			else:
+			echo '<li><small>No module loaded.</small><li>';
+			endif;
+		else:
+		echo '<li><small>Error: No modules found.</small></li>';
+		endif;
 		?>
       <li class="nav-header">Settings and Preferences</li>
 

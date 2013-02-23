@@ -64,4 +64,4 @@ $CONFIG['secret_key'] = "tH1s/is#4+seCREt/key''couLD bE\\anyThInG";
 $CONFIG['page_title'] = "COMS Administration Panel";
 
 $CONFIG['assets_folder'] = APPLICATION . "assets";
-$CONFIG['web_base_url'] = 'http://localhost/ibcraja4.org/';
+$CONFIG['web_base_url'] = 'http://localhost/';

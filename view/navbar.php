@@ -15,6 +15,7 @@
               <li><a href="<?php echo $this->location(); ?>"><i class="icon-home"></i> Dashboard</a></li>
 
 <?php
+if(isset($modules) and $modules):
 foreach ($modules as $modname) {
 	$module_url = "module/" . $modname . "/";
 	$menufile = MODULE . $modname . "/view/" . $modname . ".menu.php";
@@ -22,6 +23,7 @@ foreach ($modules as $modname) {
 	if( is_readable( $menufile ) )
 		include($menufile);
 }
+endif;
 ?>
 
 			  <!--

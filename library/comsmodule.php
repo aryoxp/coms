@@ -27,7 +27,6 @@ class comsmodule extends comscontroller {
 		$navbar['user'] = $this->coms->authenticatedUser;   //$this->session->get("user");
 		$navbar['modules'] = $this->comsmodules;
 		
-		
 		$navbar['userid'] = $this->coms->authenticatedUser->username;
 		$sidebar = $navbar;
 			
