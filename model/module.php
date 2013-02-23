@@ -1,9 +1,8 @@
 <?php
 
 class model_module extends model {
-	public function __construct() {
-		//parent::__construct();
-	}
+
+	public function __construct() {} // this model doesn't require DB connection
 	
 	public function getAllAvailableModules(){
 		
@@ -41,7 +40,8 @@ class model_module extends model {
 	public function activate( $id = NULL ) {
 		$moptions = new model_options();
 		$mods = $moptions->read('coms-module');
-		if(!in_array($id, $mods))
+		if(!is_array($mods)) $mods = array();
+		if(is_array($mods) and !in_array($id, $mods))
 			$mods[] = $id;
 		
 		return $moptions->save('coms-module', $mods);
@@ -50,7 +50,6 @@ class model_module extends model {
 	public function deactivate( $id = NULL ) {
 		$moptions = new model_options();
 		$mods = $moptions->read('coms-module');
-		//var_dump($id);
 		if(in_array($id, $mods))
 		{
 			if(($key = array_search($id, $mods)) !== false) {
@@ -63,10 +62,7 @@ class model_module extends model {
 			}
 			
 			return $moptions->save('coms-module', $mods);
-			//var_dump($key);
-		}
-		//var_dump($mods);
-		
+		}		
 	}
 	
 }

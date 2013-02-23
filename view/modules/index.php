@@ -17,7 +17,8 @@
         
     <?php 
     $modname = array();
-    
+    if(!isset($active_modules) or !is_array($active_modules))
+    	$active_modules = array();
     foreach($modules as $mod) { 
     	$modname[] = $mod->id;
     ?>
@@ -70,6 +71,7 @@
     
     <div class="well">Active Modules: 
     <?php 
+    if(!count($active_modules)) echo 'No module loaded.';
     foreach ($active_modules as $amod) {
     	if(!in_array($amod, $modname))
     	echo '<div class="label label-warning" data-modname="'.$amod.'" style="cursor:pointer">'.$amod.'</div> '; 
