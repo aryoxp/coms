@@ -23,6 +23,7 @@ class comscontroller extends controller {
 		$this->loadAllModules();
 		
 		if(!$this->authenticatedUser) {
+			$this->authenticatedUser = new stdClass;
 			$this->authenticatedUser->username = "guest";
 			$this->authenticatedUser->level = 0;
 			$this->authenticatedUser->name = "Guest";

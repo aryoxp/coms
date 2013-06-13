@@ -54,7 +54,7 @@ class model_user extends model {
 			// OK, authentication successful, 
 			// create and return the authenticated user information object
 			// from database
-			
+			$user = new stdClass;
 			$user->id = $result->id;
 			$user->username = $username;
 			$user->name = $result->name;

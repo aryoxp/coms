@@ -7,8 +7,7 @@
 	  <li class="nav-header">Modules</li>
 	
 		<?php
-		if(isset($modules) and $modules):
-			if(count($modules)):
+		if(isset($modules) and count($modules)):
 			foreach ($modules as $modname) {
 				$module_url = "module/" . $modname . "/";
 				$menufile = MODULE . $modname . "/view/" . $modname . ".sidemenu.php";
@@ -16,11 +15,8 @@
 				if( is_readable( $menufile ) )
 					include($menufile);
 			}
-			else:
-			echo '<li><small>No module loaded.</small><li>';
-			endif;
 		else:
-		echo '<li><small>Error: No modules found.</small></li>';
+			echo '<li><small><em>No modules</em></small></li>';
 		endif;
 		?>
       <li class="nav-header">Settings and Preferences</li>
