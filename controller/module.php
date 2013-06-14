@@ -67,7 +67,7 @@ class controller_module extends comscontroller {
 		$patharray = array_splice($patharray,1,count($patharray)-1);
 		
 		if( count( $patharray ) ) {
-		
+			$this->module = new stdClass;
 			$this->module->name = $patharray[0];
 			$this->module->args = array();
 
