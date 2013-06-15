@@ -1,4 +1,4 @@
-<?php $this->view("header.php"); ?>
+<?php $this->view("header-bare.php"); ?>
 
 <div class="container">
 
@@ -38,4 +38,4 @@
 
 </div><!-- /container -->
 
-<?php $this->view("footer.php"); ?>
+<?php $this->view("footer-bare.php"); ?>
