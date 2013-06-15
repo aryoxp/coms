@@ -3,11 +3,12 @@ $(function() {
 	$('#notification').hide();
 	
 	$('#logon-form').submit(function() {
-
+		event.preventDefault();
+		data = $('#logon-form').serialize();
 		$.post(
 		  base_url + "auth/logon", 
-		  $('#logon-form').serialize(),
-		  function(data){
+		  data
+		).done(function(data){
 			  if(data == "OK") {
 				window.location.href = base_url;
 		  	  } else {
@@ -16,8 +17,6 @@ $(function() {
 						$('#notification-container').fadeOut();
 				  $('#notification-container').html(alertDOM).fadeIn();
 			  }
-		  });				
-		
-		return false; // cancel default submit action
+		});
 	});	
 });
