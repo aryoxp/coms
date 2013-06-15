@@ -21,13 +21,17 @@ class controller_install extends controller {
 		echo '<button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#log">Show Log</button>';
 		echo '<div id="log" class="collapse"><div style="padding:1em">';
 		$success = true;
+		$fails = array();
 		foreach ($sqls as $s) {
 			if(trim($s)=='') continue;
 				echo '<p>Executing: <span style="font-family:monospace">'.$s.'</span> &mdash; ';
 				if($res = $db->query( trim($s) )) {
 					echo "OK";
 				} else {
-					if(preg_match('/^insert/i', $s)) $success = false;
+					if(preg_match('/^insert/i', $s)) {
+						$success = false;
+						$fails[] = $s;
+					}
 					echo "NOK: ".$db->getLastError();
 				}
 				echo '</p>';
@@ -36,14 +40,8 @@ class controller_install extends controller {
 		$log = ob_get_clean();
 		if( $success )
 			$this->view('install-success.php');
-		else $this->view('install-fail.php');
+		else $this->view('install-fail.php', array('fails'=>$fails));
 		echo $log;
 		$this->view('footer-bare.php');	
-	}
-	
-	public function success() {
-		
-		
-		
 	}
 }
