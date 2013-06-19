@@ -2,9 +2,8 @@
 
 class hello_home extends comsmodule {
 	
-	public function __construct() {
-		parent::__construct();
-
+	public function __construct($coms) {
+		parent::__construct($coms);
 	}
 	
 	public function path() {
