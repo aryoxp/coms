@@ -7,19 +7,40 @@
 	  <li class="nav-header">Modules</li>
 	
 		<?php
+		ob_start();
 		if(isset($modules) and count($modules)):
 			foreach ($modules as $modname) {
 				$module_url = "module/" . $modname . "/";
 				$menufile = MODULE . $modname . "/view/" . $modname . ".sidemenu.php";
+				if( is_readable( $menufile ) )
+					include($menufile);
+			}
+		endif;
+		$con = ob_get_clean();
+		if(!trim($con))
+			echo '<li class="muted"><small><em>No modules</em></small></li>';
+		else echo $con;
+		?>
+      <li class="nav-header">Settings and Preferences</li>
+
+		<?php
+		ob_start();
+		if(isset($modules) and count($modules)):
+			foreach ($modules as $modname) {
+				$module_url = "module/" . $modname . "/";
+				$menufile = MODULE . $modname . "/view/" . $modname . ".settingmenu.php";
 				//var_dump($menufile);
 				if( is_readable( $menufile ) )
 					include($menufile);
 			}
-		else:
-			echo '<li><small><em>No modules</em></small></li>';
 		endif;
+		$con = ob_get_clean();
+		if(trim($con)) {
+			echo $con;
+			echo '<li class="divider"></li>';
+		}
 		?>
-      <li class="nav-header">Settings and Preferences</li>
+
 
 	<li class="dropdown-submenu">
 	  <a href="#about" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i> 
@@ -41,9 +62,6 @@
 		    <i class="icon-th"></i> Modules</a></li>
 		</ul>      
       </li>
-
-
-
 	</ul>
 
 	</div><!--/span3-sidebar-->
