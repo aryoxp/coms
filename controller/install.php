@@ -1,6 +1,6 @@
 <?php
 
-class controller_install extends controller {
+class controller_install extends comscontroller {
 	public function __construct() {
 		parent::__construct();
 	}	
