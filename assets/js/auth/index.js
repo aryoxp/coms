@@ -2,7 +2,7 @@ $(function() {
 	
 	$('#notification').hide();
 	
-	$('#logon-form').submit(function() {
+	$('#logon-form').submit(function(event) {
 		event.preventDefault();
 		data = $('#logon-form').serialize();
 		$.post(
