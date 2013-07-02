@@ -17,7 +17,7 @@ $CONFIG['environment'] = 'development';
  * if you wish an url without "index.php" .
  * but don't forget to configure the .htaccess file if you change this
  */ 
-$CONFIG['index_file']                       = ''; 
+$CONFIG['index_file']                       = 'index.php'; 
 
 /**
  * EN: Database configuration.

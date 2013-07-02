@@ -2,10 +2,8 @@
 class controller_home extends comscontroller {
 
 	function __construct() {
-		
 		parent::__construct();
 		$this->require_auth('auth');
-		
 	}
 	
 	function index() {

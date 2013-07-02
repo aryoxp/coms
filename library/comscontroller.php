@@ -18,10 +18,10 @@ class comscontroller extends controller {
   		
   		if(!defined('MODULE'))
   			define('MODULE','modules/');
-  		      
+       
 		$this->page_title = $this->config->page_title;		
 		$this->loadAllModules();
-		
+		//exit;
 		if(!$this->authenticatedUser) {
 			$this->authenticatedUser = new stdClass;
 			$this->authenticatedUser->username = "guest";
@@ -35,8 +35,7 @@ class comscontroller extends controller {
 	public function loadAllModules() {
 
 		$mmodule = new model_module();
-		$this->comsmodules = $mmodule->getAllActiveModules(); //var_dump($this->comsmodules);
-		
+		$this->comsmodules = $mmodule->getAllActiveModules();
 		autoloader::register(array($this, 'autoload_module_controller'));
 		autoloader::register(array($this, 'autoload_module_model'));
 		autoloader::register(array($this, 'autoload_module_library'));	

@@ -6,10 +6,10 @@ class model_options extends model {
 	}
 	
 	public function read($id){
-	
+
 		$sql = "SELECT id, name, description, value, level FROM coms_options ";
 		$sql .= "WHERE name = '".$this->db->escape($id)."'";
-	
+
 		$option = $this->db->getRow( $sql );
 		
 		return unserialize($option->value);
