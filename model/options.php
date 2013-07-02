@@ -11,8 +11,9 @@ class model_options extends model {
 		$sql .= "WHERE name = '".$this->db->escape($id)."'";
 
 		$option = $this->db->getRow( $sql );
-		
-		return unserialize($option->value);
+		if($option)
+			return unserialize($option->value);
+		else return null;
 		
 	}
 	
