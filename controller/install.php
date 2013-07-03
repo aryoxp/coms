@@ -6,9 +6,18 @@ class controller_install extends comscontroller {
 	}	
 	
 	public function index() {
+	
+		$db = new db();
+		$db->testConnect();
+		$data['connect'] = $db->testConnect();
+		$data['db'] = $db->testSelectDb();
+		//var_dump($data);
+		$db->close();
+		
 		$this->view('header-bare.php');
-		$this->view('install.php');
+		$this->view('install.php', $data);
 		$this->view('footer-bare.php');
+		
 	}
 	
 	public function doinstall() {
