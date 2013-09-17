@@ -11,8 +11,8 @@ class controller_module extends comscontroller {
 			$this->start();
 		//exit;		
 	}
-	
-	public function index( $status = NULL){
+
+    public function index( $status = NULL){
 	
 		$this->require_auth('auth');
 	
@@ -130,5 +130,14 @@ class controller_module extends comscontroller {
 			}
 		}
 	}
-	
+
+    /**
+     * @param null $path Asset file path to be shown as source target, relative to module directory
+     * @return string Full path to target asset file
+     */
+    public function assets( $path = NULL ) {
+        $location = str_replace( "//", "/", $path );
+        return $this->config->base_url() . $location;
+    }
+
 }
