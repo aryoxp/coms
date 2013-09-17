@@ -25,8 +25,8 @@
 	<?php $scripts = $this->get_scripts(); 
 	foreach( $scripts as $s) : ?><script src="<?php echo $this->asset($s); ?>"></script>
 	<?php endforeach; ?>
-	<?php if( isset($mscripts) and is_array($mscripts)) { 
-	foreach( $mscripts as $s) : ?><script src="<?php echo $this->location($s); ?>"></script>
+	<?php if( isset($mscripts) and is_array($mscripts)) {
+	foreach( $mscripts as $s) : ?><script src="<?php echo $this->assets($s); ?>"></script>
 	<?php endforeach; } ?>
 	
 	</body>
