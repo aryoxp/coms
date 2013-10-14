@@ -60,13 +60,14 @@ class comsmodule extends comscontroller {
 	
 	}
 	
-	public function location( $path = NULL ) {
+	public function location( $path = NULL, $localmodule = false ) {
 		
 		if(substr($this->config->index_file, strlen($this->config->index_file)-1, 1) != "/" 
 			&& strlen(trim($this->config->index_file)) > 0 )
 			$this->config->index_file .= "/";
+        if($localmodule)
+            $path = "module/" . $this->module->name . "/" . $path;
 		$location = str_replace( "//", "/",  $this->config->index_file . $path );
-		
 		return $this->config->base_url() . $location;
 	}
 	
