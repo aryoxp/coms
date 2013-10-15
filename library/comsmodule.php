@@ -87,6 +87,14 @@ class comsmodule extends comscontroller {
 		if(file_exists( $script ))
 			$this->scripts[] = $script;
 	}
+
+    public function add_source_style($styleurl) {
+        $this->styles[] = $styleurl;
+    }
+
+    public function add_source_script($scripturl) {
+        $this->scripts[] = $scripturl;
+    }
 	
 	public function get_scripts() {
 		return $this->scripts;

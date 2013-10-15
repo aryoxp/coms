@@ -22,11 +22,10 @@
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="<?php echo $this->asset("js/jquery.js"); ?>"></script>
 	<script src="<?php echo $this->asset("bootstrap/js/bootstrap.min.js"); ?>"></script>
-	<?php $scripts = $this->get_scripts(); 
-	foreach( $scripts as $s) : ?><script src="<?php echo $this->asset($s); ?>"></script>
-	<?php endforeach; ?>
-	<?php if( isset($mscripts) and is_array($mscripts)) {
-	foreach( $mscripts as $s) : ?><script src="<?php echo $this->assets($s); ?>"></script>
+	<?php $scripts = $this->get_scripts();
+	foreach( $scripts as $s) : ?><script src="<?php echo preg_match('/^http/i', $s)? $s : $this->asset($s); ?>"></script>
+	<?php endforeach; ?><?php if( isset($mscripts) and is_array($mscripts)) {
+	foreach( $mscripts as $s) : ?><script src="<?php echo preg_match('/^http/i', $s)? $s : $this->assets($s); ?>"></script>
 	<?php endforeach; } ?>
 	
 	</body>
