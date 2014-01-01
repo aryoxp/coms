@@ -101,7 +101,7 @@ class comscontroller extends controller {
 		$this->view('error/noprivileges.php');
 		exit;
 	}
-	
+
 	public function autoload_module_controller( $className ) {
 		// convert the given class name to it's path
 		$classPath = trim( str_replace("_", "/", $className), "/" );
